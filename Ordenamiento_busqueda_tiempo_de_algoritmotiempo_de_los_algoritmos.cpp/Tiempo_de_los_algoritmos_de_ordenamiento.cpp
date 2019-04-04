@@ -12,11 +12,9 @@ typedef void(*fun_sort)(int *, int);
 void merg(int *A,int i,int m,int j){
     int b=i,d=m+1,c=0;
 while(b<=m &&d<=j){
-    if(A[b]<=A[d]){
-        a[c]=A[b];
-        b++;c++;}
-    else {a[c]=A[d];
-        d++;c++;}
+    if(A[b]<=A[d])
+        a[c++]=A[b++];
+    else a[c++]=A[d++];
 }
 while(b<=m)a[c++]=A[b++];
 while(d<=j)a[c++]=A[d++];
