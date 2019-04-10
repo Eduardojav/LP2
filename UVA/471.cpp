@@ -1,8 +1,12 @@
 #include <iostream>
 using namespace std;
 int main() {
-	int k, lista[12];
+	int k, lista[12],count = 0;
 	while (cin>>k) {
+	    if(k==0)return 0;
+
+        if (count++)
+            cout<<endl;
 		for (int i = 0; i < k; i++)
 			cin>>lista[i];
 		for (int a = 0; a < k - 5; a++)
