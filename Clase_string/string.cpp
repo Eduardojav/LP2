@@ -1,5 +1,7 @@
 #include "my_string.h"
 #include<iostream>
+my_string::my_string(){
+            A=new char[0];}
 my_string::my_string (const char * text){
 	tamano(text);
 	A = new char[tam];
@@ -30,14 +32,16 @@ my_string& my_string::operator = (const my_string & text){
 	tam=b;
 	for(int i=0;i<b;i++)
 		A[i]=text.A[i];
+     return *this;
 }
-my_string& my_string::operator = (const char* text){
+my_string & my_string::operator = (const char* text){
 	int b=tamano(text);
 	delete[] A;
 	A=new char[b];
 	tam=b;
 	for(int i=0;i<b;i++)
 		A[i]=text[i];
+    return *this;
 }
 my_string& my_string::operator + (const my_string & text){
 	int b=text.tam;
@@ -49,6 +53,7 @@ my_string& my_string::operator + (const my_string & text){
     for(int i=tam-1;i<tam+b-1;i++) A[i]=text.A[c++];
     tam=tam+b-1;
     delete[] aux;
+    return *this;
 }
 my_string& my_string:: operator +(const  char* text){
     int i=0;
@@ -59,32 +64,31 @@ my_string& my_string:: operator +(const  char* text){
 	b++;
 	int c=0;
 	char *aux=new char[tam];
-	for(i=0;i<tam;i++)aux[i]=A[i];
+	for( i=0;i<tam;i++)aux[i]=A[i];
 	A=new char[b-1];
-	for(i=0;i<tam;i++) A[i]=aux[i];
-    for(i=tam-1;i<tam+b-1;i++) A[i]=text[c++];
+	for( i=0;i<tam;i++)A[i]=aux[i];
+    for( i=tam-1;i<tam+b-1;i++) A[i]=text[c++];
     tam=tam+b-1;
     delete[] aux;
+    return *this;
 }
+char &my_string:: operator[]( int i){
+    if(i>=0&&i<tam)
+        return A[i];
+    else{
+        cout << "Posición incorrecta: " << i << endl;
+    }}
 bool my_string:: operator == (const my_string & text){
     if(tam!=text.tam) return false;
     for(int i=0;i<tam;i++)
         if(A[i]!=text.A[i])  return false;
     return true;}
-ostream & my_string::  operator << (ostream & os ,const my_string &texto){
-
-}
-int main() {
+int main(){
 	my_string prim("h");
-	my_string prim2("hola");
+	cout<<prim.tam<<endl;
+	my_string prim2("hsd");
 	my_string prim3("bye");
+	cout<<prim2<<endl;
+	prim3=prim+"hey"+"bye";
 	if(prim==prim2)cout<<"verdadero"<<endl;
-	prim3+prim;
-	prim2+"adios";
-	prim2+"no";
-
-	prim.print();
-	prim2.print();
-	prim3.print();
-}
-
+	cout<<prim2[1];}
