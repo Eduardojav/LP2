@@ -35,4 +35,3 @@ class my_string{
             return os<<str.A;
     }
 };
-
