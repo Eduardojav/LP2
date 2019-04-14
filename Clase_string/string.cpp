@@ -1,5 +1,7 @@
-#include "my_string.h"
+#include "my_string2.h"
+#include "testingstr.h"
 #include<iostream>
+my_string aux("hola");
 my_string::my_string(){
             A=new char[0];}
 my_string::my_string (const char * text){
@@ -45,32 +47,28 @@ my_string & my_string::operator = (const char* text){
 }
 my_string& my_string::operator + (const my_string & text){
 	int b=text.tam;
+	int i=0;
 	int c=0;
-	char *aux=new char[tam];
-	for(int i=0;i<tam;i++)aux[i]=A[i];
-	A=new char[b-1];
-	for(int i=0;i<tam;i++) A[i]=aux[i];
-    for(int i=tam-1;i<tam+b-1;i++) A[i]=text.A[c++];
-    tam=tam+b-1;
-    delete[] aux;
-    return *this;
+	delete[] aux.A;
+	aux.A=new char[b+tam];
+	aux.tam=tam+b;
+	for( i=0;i<tam;i++)aux[i]=A[i];
+    for( i=tam-1;i<tam+b;i++) aux[i]=text.A[c++];
+    return aux;
 }
-my_string& my_string:: operator +(const  char* text){
+my_string & my_string:: operator +(const  char* text){
     int i=0;
     int b=0;
 	while(text[i] != '\0'){
             i++;
             b++;}
-	b++;
 	int c=0;
-	char *aux=new char[tam];
+	delete[] aux.A;
+	aux.A=new char[b+tam];
+	aux.tam=tam+b;
 	for( i=0;i<tam;i++)aux[i]=A[i];
-	A=new char[b-1];
-	for( i=0;i<tam;i++)A[i]=aux[i];
-    for( i=tam-1;i<tam+b-1;i++) A[i]=text[c++];
-    tam=tam+b-1;
-    delete[] aux;
-    return *this;
+    for( i=tam-1;i<tam+b;i++) aux[i]=text[c++];
+    return aux;
 }
 char &my_string:: operator[]( int i){
     if(i>=0&&i<tam)
@@ -83,12 +81,123 @@ bool my_string:: operator == (const my_string & text){
     for(int i=0;i<tam;i++)
         if(A[i]!=text.A[i])  return false;
     return true;}
+bool my_string:: operator < (const my_string & text){
+    int t;
+    if(text.tam>tam){
+        t=tam;
+    }
+    else{
+        t=text.tam;
+    }
+    for(int i=0; i<t ;i++){
+        if(A[i]<text.A[i]){
+            return true;
+        }
+        else if(A[i]>text.A[i]){
+            return false;
+        }
+    }
+    if(text.tam>tam){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+bool my_string:: operator > (const my_string & text){
+    int t;
+    if(text.tam>tam){
+        t=tam;
+    }
+    else{
+        t=text.tam;
+    }
+    for(int i=0; i<t ;i++){
+        if(A[i]>text.A[i]){
+            return true;
+        }
+        else if(A[i]<text.A[i]){
+            return false;
+        }
+    }
+    if(text.tam<tam){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+bool my_string:: operator <= (const my_string & text){
+    int t;
+    if(text.tam>tam){
+        t=tam;
+    }
+    else{
+        t=text.tam;
+    }
+    for(int i=0; i<t ;i++){
+        if(A[i]<text.A[i]){
+            return true;
+        }
+        else if(A[i]>text.A[i]){
+            return false;
+        }
+    }
+    if(text.tam>tam){
+        return true;
+    }
+    else if(text.tam<tam){
+        return false;
+    }
+    else{
+        return true;
+    }
+}
+bool my_string:: operator >= (const my_string & text){
+    int t;
+    if(text.tam>tam)
+        t=tam;
+    else
+        t=text.tam;
+    for(int i=0; i<t ;i++){
+        if(A[i]>text.A[i])
+            return true;
+        else if(A[i]<text.A[i])
+            return false;}
+    if(text.tam<tam)
+        return true;
+    else if(text.tam>tam)
+        return false;
+    else
+        return true;
+}
+my_string& my_string::operator += (const my_string & text){
+	int b=text.tam;
+	int i=0;
+	int c=0;
+	char * e=new char[b+tam];
+	for( i=0;i<tam;i++)e[i]=A[i];
+    for( i=tam-1;i<tam+b;i++)e[i]=text.A[c++];
+    delete[]A;
+    A=new char[b+tam];
+    for( i=0; i<tam+b; i++)A[i]=e[i];
+    delete[]e;
+}
+my_string & my_string:: operator += (const  char* text){
+    int i=0;
+    int b=0;
+	while(text[i] != '\0'){
+            i++;
+            b++;}
+	int c=0;
+	char * e=new char[b+tam];
+	for( i=0;i<tam;i++)e[i]=A[i];
+    for( i=tam-1;i<tam+b;i++) e[i]=text[c++];
+    delete[]A;
+    A=new char[b+tam];
+    for( i=0; i<tam+b; i++)A[i]=e[i];
+    delete[]e;
+}
 int main(){
-	my_string prim("h");
-	cout<<prim.tam<<endl;
-	my_string prim2("hsd");
-	my_string prim3("bye");
-	cout<<prim2<<endl;
-	prim3=prim+"hey"+"bye";
-	if(prim==prim2)cout<<"verdadero"<<endl;
-	cout<<prim2[1];}
+prueba();
+return 0;}
