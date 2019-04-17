@@ -1,8 +1,9 @@
-#include "my_string2.h"
+//trabajo de Daniel Mendiguri y Eduardo Carnero
+#include "strings.h"
+#include "testingstr.h"
 #include<iostream>
 my_string::my_string(){
-            A=new char[1];
-            tam=0;}
+            A=new char[0];}
 my_string::my_string (const char * text){
 	tamano(text);
 	A = new char[tam];
@@ -44,26 +45,25 @@ my_string & my_string::operator = (const char* text){
 		A[i]=text[i];
     return *this;
 }
-my_string my_string::operator + (const my_string & text){
-    my_string aux(*this);
+my_string my_string :: operator + (const my_string text){
 	int b=text.tam;
 	int i=0;
 	int c=0;
-	aux.A=new char[b];
+	my_string aux;
+	aux.A=new char[b+tam];
 	aux.tam=tam+b;
 	for( i=0;i<tam;i++)aux[i]=A[i];
     for( i=tam-1;i<tam+b;i++) aux[i]=text.A[c++];
     return aux;
 }
-my_string my_string:: operator +(const  char* text){
-    my_string aux;
+my_string my_string :: operator +(const  char* text){
     int i=0;
     int b=0;
 	while(text[i] != '\0'){
             i++;
             b++;}
 	int c=0;
-	delete[] aux.A;
+	my_string aux;
 	aux.A=new char[b+tam];
 	aux.tam=tam+b;
 	for( i=0;i<tam;i++)aux[i]=A[i];
@@ -81,4 +81,124 @@ bool my_string:: operator == (const my_string & text){
     for(int i=0;i<tam;i++)
         if(A[i]!=text.A[i])  return false;
     return true;}
-
+bool my_string:: operator < (const my_string & text){
+    int t;
+    if(text.tam>tam){
+        t=tam;
+    }
+    else{
+        t=text.tam;
+    }
+    for(int i=0; i<t ;i++){
+        if(A[i]<text.A[i]){
+            return true;
+        }
+        else if(A[i]>text.A[i]){
+            return false;
+        }
+    }
+    if(text.tam>tam){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+bool my_string:: operator > (const my_string & text){
+    int t;
+    if(text.tam>tam){
+        t=tam;
+    }
+    else{
+        t=text.tam;
+    }
+    for(int i=0; i<t ;i++){
+        if(A[i]>text.A[i]){
+            return true;
+        }
+        else if(A[i]<text.A[i]){
+            return false;
+        }
+    }
+    if(text.tam<tam){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+bool my_string:: operator <= (const my_string & text){
+    int t;
+    if(text.tam>tam){
+        t=tam;
+    }
+    else{
+        t=text.tam;
+    }
+    for(int i=0; i<t ;i++){
+        if(A[i]<text.A[i]){
+            return true;
+        }
+        else if(A[i]>text.A[i]){
+            return false;
+        }
+    }
+    if(text.tam>tam){
+        return true;
+    }
+    else if(text.tam<tam){
+        return false;
+    }
+    else{
+        return true;
+    }
+}
+bool my_string:: operator >= (const my_string & text){
+    int t;
+    if(text.tam>tam)
+        t=tam;
+    else
+        t=text.tam;
+    for(int i=0; i<t ;i++){
+        if(A[i]>text.A[i])
+            return true;
+        else if(A[i]<text.A[i])
+            return false;}
+    if(text.tam<tam)
+        return true;
+    else if(text.tam>tam)
+        return false;
+    else
+        return true;
+}
+my_string& my_string::operator += (const my_string & text){
+	int b=text.tam;
+	int i=0;
+	int c=0;
+	char * e=new char[b+tam];
+	for( i=0;i<tam;i++)e[i]=A[i];
+    for( i=tam-1;i<tam+b;i++)e[i]=text.A[c++];
+    delete[]A;
+    A=new char[b+tam];
+    for( i=0; i<tam+b; i++)A[i]=e[i];
+    delete[]e;
+}
+my_string & my_string:: operator += (const  char* text){
+    int i=0;
+    int b=0;
+	while(text[i] != '\0'){
+            i++;
+            b++;}
+	int c=0;
+	char * e=new char[b+tam];
+	for( i=0;i<tam;i++)e[i]=A[i];
+    for( i=tam-1;i<tam+b;i++) e[i]=text[c++];
+    delete[]A;
+    A=new char[b+tam];
+    for( i=0; i<tam+b; i++)A[i]=e[i];
+    delete[]e;
+}
+int main(){
+prueba();
+return 0;
+}
