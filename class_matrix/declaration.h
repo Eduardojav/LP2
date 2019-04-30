@@ -26,7 +26,7 @@ E** data;
 
   		Matrix<E> & operator << (E v);
 
-        Matrix<E>  & operator ()(int a, int b);
+      E  & operator ()(int a, int b);
 
   		friend std::ostream &operator << (std::ostream & os, const Matrix <E> & m){
             for(int i = 0; i < m.row ;i++)
@@ -101,7 +101,7 @@ Matrix<E> Matrix<E>::  operator * (const Matrix<E> & summ )
         }
 }
 template<class E>
-Matrix<E> & Matrix<E>::  operator ()(int a, int b)
+E & Matrix<E>::  operator ()(int a, int b)
 {
     return data[a][b];
 }
