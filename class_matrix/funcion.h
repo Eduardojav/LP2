@@ -10,9 +10,8 @@ class Matrix{
     int complete=0;
     int R=0;
     int C=0;
-
+E** data;
     public:
-        E** data;
 
     	Matrix(int r,int c);
 
@@ -75,9 +74,9 @@ template<class E>
     {
         Matrix <E> aux(row,col);
         for (int i=0;i<row;i++)
-            for (int j=0;j<col;j++)
+            for (int j=0;j<col;j++){
               aux.data[i][j] = data[i][j] + summ.data[i][j];
-              cout<<aux<<endl;
+			  }
         return aux;
         }
 }
@@ -99,7 +98,6 @@ Matrix<E> Matrix<E>::  operator * (const Matrix<E> & summ )
             for (int j = 0 ; j < aux.col ; j++)
              	for(int k = 0 ; k < col ; k++)
               		aux.data[i][j] += data[i][k] * summ.data[k][j];
-        cout<<aux<<endl;
         return aux;
         }
 }
