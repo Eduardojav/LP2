@@ -1,4 +1,4 @@
-ifndef DECLARATION_H_INCLUDED
+#ifndef DECLARATION_H_INCLUDED
 #define DECLARATION_H_INCLUDED
 #include<iostream>
 using namespace std;
@@ -18,27 +18,27 @@ class Matrix{
 
     	Matrix(const Matrix<E> & summ );
 
-		~Matrix();
+	~Matrix();
 
     	void llenar();
 
     	Matrix<E> & operator = (const Matrix<E> & summ );
 
-  		Matrix<E>   operator +(const Matrix<E> & summ );
+	Matrix<E>   operator +(const Matrix<E> & summ );
 
-  		Matrix<E>   operator -(const Matrix<E> & summ );
+	Matrix<E>   operator -(const Matrix<E> & summ );
 
-  		Matrix<E>   operator *(const Matrix<E> & summ);
+	Matrix<E>   operator *(const Matrix<E> & summ);
 
-  		Matrix<E> & operator *(double a);
+	Matrix<E> & operator *(double a);
 
-  		Matrix<E> & operator /(double a);
+	Matrix<E> & operator /(double a);
 
-  		Matrix<E> & operator << (E v);
+	Matrix<E> & operator << (E v);
 
         E  & operator ()(int a, int b);
 
-  		friend std::ostream &operator << (std::ostream & os, const Matrix <E> & m)
+  	friend std::ostream &operator << (std::ostream & os, const Matrix <E> & m)
             {
             for(int i = 0; i < m.row ;i++)
                 {
