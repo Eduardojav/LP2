@@ -1,19 +1,24 @@
 #include <iostream>
 #include "declaration.h"
-
+#include <stdlib.h>
+#include<algorithm>
+#include<ctime>
+#include<cstdlib>
+#include<cstring>
+#include <iostream>
 using namespace std;
 
 int main()
-{
+{   cout<<"as"<<endl;
     Matrix<int> uno(3,3);
     Matrix<int> dos(3,3);
     Matrix<int> cuatro(3,3);
-    uno.llenar();
+    uno.fill_in();
     uno<<1<<1<<1<<1<<1<<1<<1<<1<<1<<1<<1;
     dos<<1<<1<<1<<1<<1<<1<<1<<1<<1<<1<<1;
+    uno(1,1)=12;
+    uno(0,2)=13;
     Matrix<int> tres(uno);
-    cuatro=dos;
-    cuatro(1,1)=2;
     cout<<"1.-esta es la uno"<<endl;
     cout<<uno<<endl;
     cout<<"2.-esta es la dos"<<endl;
@@ -30,7 +35,3 @@ int main()
     cout<< cuatro/2<<endl;
     return 0;
 }
-
-
-
-
