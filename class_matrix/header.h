@@ -55,5 +55,5 @@ class Matrix{
   };
 
 
-#include "edu.inl"
+#include "matrix_f.inl"
 #endif // DECLARATION_H_INCLUDED
