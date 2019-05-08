@@ -1,15 +1,12 @@
 #include <iostream>
-#include "declaration.h"
+#include "header.h"
 #include <stdlib.h>
-#include<algorithm>
-#include<ctime>
 #include<cstdlib>
-#include<cstring>
 #include <iostream>
 using namespace std;
 
 int main()
-{   cout<<"as"<<endl;
+{  
     Matrix<int> uno(3,3);
     Matrix<int> dos(3,3);
     Matrix<int> cuatro(3,3);
@@ -19,6 +16,7 @@ int main()
     uno(1,1)=12;
     uno(0,2)=13;
     Matrix<int> tres(uno);
+    cuatro=dos;
     cout<<"1.-esta es la uno"<<endl;
     cout<<uno<<endl;
     cout<<"2.-esta es la dos"<<endl;
