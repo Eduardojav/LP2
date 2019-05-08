@@ -4,9 +4,9 @@ using namespace std;
 class my_string{
 	private:
 		char *A=NULL;
-		int tamano(const char * text=NULL);
+		int size(const char * text=NULL);
 		int tamo(char * text=NULL);
-		int tam;
+		int siz;
 	public:
 	    void print(){cout<<"este es el tamaño  "<<tam<<endl;}
 		my_string();
