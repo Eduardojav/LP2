@@ -10,19 +10,18 @@
 using namespace std;
 int a[10000];
 void merg(int *A,int i,int m,int j){
-
-    int b=i,d=m+1,c=0;
-    while(b<=m &&d<=j){
-        if(A[b]<=A[d])
-            a[c++]=A[b++];
-        else a[c++]=A[d++];
+	int b = i,d = m+1 ,c = 0;
+    	while(b <= m &&d <= j){
+        	if(A[b] <= A[d])
+            		a[c++] = A[b++];
+        	else a[c++] = A[d++];
     }
-    while(b<=m)a[c++]=A[b++];
-    while(d<=j)a[c++]=A[d++];
+    while(b < =m) a[c++] = A[b++];
+    while(d <= j) a[c++] = A[d++];
     memcpy(A+i,a,sizeof(int)*(j-i+1));}
 void merg(int *A,int i,int j){
     if(i==j)return;
-    int m=(i+j)/2;
+    int m = (i + j) /2;
     merg(A,i,m);
     merg(A,m+1,j);
     merg(A,i,m,j);}
@@ -31,28 +30,28 @@ void merg(int *A, int n){
 int main(){
 	int L,D,tam,k,libros[10000];bool print;
 	while(cin>>L){
-        print=true;
-        tam=L;
-        for(int i=0;i<tam;i++){
+        print = true;
+        tam = L;
+        for(int  i = 0; i < tam ; i++){
                 cin>>L;
-            libros[i]=L;
+            libros[i] = L;
         }
     merg(libros,tam);
-    int mn=libros[0], mx=libros[tam-1];
+    int mn = libros[0], mx = libros[tam-1];
         cin>>D;
-        for(int i=0;i<tam;i++){
-            k=i+1;
-        while((libros[i]+libros[k])<=D&&k<tam){
-        if(mx-mn>libros[k]-libros[i]&&libros[k]+libros[i]==D){
-            mx=libros[k];mn=libros[i];}
+        for(int i = 0;i < tam; i++){
+            k = i+1;
+        while((libros[i] + libros[k]) <= D && k < tam){
+        if(mx - mn > libros[k] - libros [i] && libros[k] + libros[i] == D){
+            mx = libros[k] ; mn = libros[i];}
         k++;
 		}
-		k=i+1;
+		k = i + 1;
 		if(libros[i]+libros[k]>D && mx+mn==D){
             break;
             cout<<"Peter should buy books whose prices are "<< mn <<" and " << mx<<endl;
 
-            print=false;
+            print = false;
 		}
 		}
         if(print){
