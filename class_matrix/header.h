@@ -10,8 +10,8 @@ class Matrix{
 
     private:
 
-    int row , col , R , C;
-    E* data;
+	int row , col , R , C;
+    	E* data;
 
     public:
 
