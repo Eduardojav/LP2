@@ -10,27 +10,27 @@ class vector{
 
     public:
 
-        vector();
+        vector();// defecto
 
-        vector(int a);
+        vector(int a);// con un tamaño establecido
 
-        vector(const vector<E>& ex);
+        vector(const vector<E>& ex);// copia
 
-        ~vector();
+        ~vector();// destructor
 
-        void push_back(const E a);
+        void push_back(const E a);// agrega un valor al final
 
-	void pop_back();
+	void pop_back();	// elimina el ultimo
 
-	void swap(vector<E> & ex);
+	void swap(vector<E> & ex);// intercambia datos de 2 vectores
 
-	void erase(int a);
+	void erase(int a);// borra el a-esimo elemento
 
-	void erase(int a, int b);
+	void erase(int a, int b);// borra en un rango 
 
-	const int si_ze();
+	const int si_ze();	// muestra el tamaño
 
-	E& operator[](unsigned i);
+	E& operator[](unsigned i);// retorna el valor en la posicion [i]
 
 };
 #include "vector.inl"
