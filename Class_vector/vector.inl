@@ -57,6 +57,8 @@ template<class E>
         vector<E> aux1(ex);
         delete[] ex.data;
         delete[] data;
+        data=new E[aux1.size];
+        ex.data=new E[aux.size];
         memcpy(ex.data,aux.data,sizeof(E) * aux.size);
         memcpy(data,aux1.data,sizeof(E) * aux1.size);
         ex.size=aux.size;
