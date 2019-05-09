@@ -30,7 +30,8 @@ Matrix<E>::Matrix(const Matrix<E> & summ )
     row = summ.row;
     R = 0 ; C = 0;
     data = new E [col*row];
-    memcpy(data ,summ.data,sizeof(E)*(col*row));}
+    memcpy(data ,summ.data,sizeof(E)*(col*row));
+    }
 
 template<class E>
 Matrix<E>:: ~Matrix()
@@ -46,7 +47,8 @@ void Matrix<E>::fill_in()
     }
 
 template<class E>
-Matrix<E>& Matrix<E>::  operator = (const Matrix<E> & summ ){
+Matrix<E>& Matrix<E>::  operator = (const Matrix<E> & summ )
+    {
     delete[] data;
     col = summ.col;
     row = summ.row;
@@ -54,7 +56,7 @@ Matrix<E>& Matrix<E>::  operator = (const Matrix<E> & summ ){
     data = new E [col*row];
     memcpy(data ,summ.data,sizeof(E)*(col*row));
     return *this;
-}
+    }
 
 template<class E>
 Matrix<E> Matrix<E>::  operator +(const Matrix<E> & summ )
@@ -70,7 +72,6 @@ Matrix<E> Matrix<E>::  operator +(const Matrix<E> & summ )
 template<class E>
 Matrix<E>  Matrix<E>::  operator -(const Matrix<E> & summ )
     {
-
     assert(row == summ.row && col==summ.col);
     Matrix <E> aux(row,col);
     for (int i = 0 ; i < row ; i++)
@@ -96,16 +97,17 @@ template<class E>
 Matrix<E>& Matrix<E>::  operator *(double a)
     {
     for (int i = 0 ; i < row*col ; i++)
-                data[i]*= a;
+    	data[i]*= a;
     return *this;
     }
 
 template<class E>
-Matrix<E>& Matrix<E>::  operator /(double a){
+Matrix<E>& Matrix<E>::  operator /(double a)
+    {
     for (int i = 0 ; i < row *col; i++)
                 data[i]/= a;
     return *this;
-}
+    }
 
 template<class E>
 E & Matrix<E>::  operator ()(int a, int b)
