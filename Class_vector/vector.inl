@@ -75,10 +75,10 @@ template<class E>
 
     template<class E>
     void vector<E>:: erase(int a, int b){
-        assert (a<=size&&a>0&&b<=size&&b>0);
+        assert (a <= size && a > 0 && b <= size && b > 0);
         vector<E> aux(*this);
         delete [] data;
-        size-=(b-a)+1;
+        size-=(b-a) + 1;
         data= new E[size];
         memcpy(data,aux.data,sizeof(E) * a--);
         memcpy(data+a,aux.data+b,sizeof(E)*size-a);
