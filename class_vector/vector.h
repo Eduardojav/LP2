@@ -20,17 +20,17 @@ class vector{
 
         void push_back(const E a);
 
-		void pop_back();
+	void pop_back();
 
-		void swap(vector<E> & ex);
+	void swap(vector<E> & ex);
 
-		void erase(int a);
+	void erase(int a);
 
-		void erase(int a, int b);
+	void erase(int a, int b);
 
-		const int si_ze();
+	const int si_ze();
 
-		E& operator[](unsigned i);
+	E& operator[](unsigned i);
 
 };
 #include "vector.inl"
