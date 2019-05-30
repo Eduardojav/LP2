@@ -21,13 +21,14 @@ public:
 	~MainWindow();
 
 private slots:
-	void on_b_draw_circle_clicked();
+    void on_b_draw_clicked();
+    void on_b_draw_circle_clicked();
     void on_b_draw_square_clicked();
     void on_b_draw_triangle_clicked();
 
 
 private:
-	void draw_circle(QPainter * painter);
+    void draw_circle(QPainter * painter);
     void draw_square(QPainter * painter);
     void draw_triangle(QPainter * painter);
 
