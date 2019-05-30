@@ -27,7 +27,7 @@ MainWindow::~MainWindow()
 void MainWindow::on_b_draw_clicked()
 {
     pixmap->fill();
-    for(unsigned long long i=0; i<af.size();i++){
+    for(unsigned long long i=0; i<draws.size();i++){
         draws[i]->draw(painter);
     }
     ui->label_draw_area->setPixmap(*pixmap);
