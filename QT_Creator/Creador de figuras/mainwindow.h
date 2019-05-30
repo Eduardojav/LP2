@@ -28,9 +28,9 @@ private slots:
 
 
 private:
-    void draw_circle(QPainter * painter);
-    void draw_square(QPainter * painter);
-    void draw_triangle(QPainter * painter);
+    void Add_circle(QPainter * painter);
+    void Add_square(QPainter * painter);
+    void Add_triangle(QPainter * painter);
 
 	Ui::MainWindow *ui;
 
