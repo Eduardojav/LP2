@@ -5,7 +5,7 @@
 class figure
 {
 public:
-    figure();
+    virtual figure();
 };
 class circle:public figure{
 private:
@@ -13,7 +13,7 @@ private:
     int x;
     int y;
 public:
-    circle();
+    virtual circle();
 };
 class square:public figure{
 private:
@@ -21,7 +21,7 @@ private:
     int x;
     int y;
 public:
-    square();
+    virtual square();
 };
 class triangle:public figure{
 private:
@@ -29,7 +29,7 @@ private:
     int x2,y2;
     int x3, y3;
 public:
-    triangle();
+    virtual triangle();
 };
 
 #endif // FIGUREH_H
