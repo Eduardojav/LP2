@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "figure.h"
-
+vector<figure> draws;
 MainWindow::MainWindow(QWidget *parent) :
 	QMainWindow(parent),
 	ui(new Ui::MainWindow)
@@ -24,27 +24,28 @@ MainWindow::~MainWindow()
 	delete ui;
 }
 
-void MainWindow::draw_circle(QPainter * painter)
+void MainWindow::on_b_draw_clicked()
 {
-	int r = rand() % 100 + 1;
-	painter->drawEllipse({rand()%pixmap->width(), rand()%pixmap->height()}, r, r);
+    pixmap->fill();
+    for(unsigned long long i=0; i<af.size();i++){
+        draws[i]->draw(painter);
+    }
+    ui->label_draw_area->setPixmap(*pixmap);
+}
+
+void MainWindow::Add_circle(QPainter * painter)
+{
+	draws.push_back(new circle());
 
 }
-void MainWindow::draw_square(QPainter * painter)
+void MainWindow::Add_square(QPainter * painter)
 {
-    int p = rand() % 100 + 1;
-    painter->drawRect(rand()%pixmap->width(), rand()%pixmap->height(),p,p);
+	draws.push_back(new square());
 }
-void MainWindow::draw_triangle(QPainter *painter){
-    int p = rand()%pixmap->width();
-    int e = rand()%pixmap->height();
-    int b = rand()%pixmap->width();
-    int c = rand()%pixmap->height();
-    int f = rand()%pixmap->width();
-    int g = rand()%pixmap->height();
-    painter->drawLine(b, c, p,e );
-    painter->drawLine(p, e, f,g);
-    painter->drawLine(f, g, b, c);
+void MainWindow::Add_triangle(QPainter *painter){
+    
+
+    draws.push_back(new triangle());
 
 };
 
@@ -52,7 +53,7 @@ void MainWindow::on_b_draw_circle_clicked()
 {
 	pixmap->fill();
 
-	draw_circle(painter);
+	Add_circle(painter);
 
 	ui->label_draw_area->setPixmap(*pixmap);
 }
@@ -60,7 +61,7 @@ void MainWindow::on_b_draw_square_clicked()
 {
     pixmap->fill();
 
-    draw_square(painter);
+    Add_square(painter);
 
     ui->label_draw_area->setPixmap(*pixmap);
 }
@@ -68,7 +69,7 @@ void MainWindow::on_b_draw_triangle_clicked()
 {
     pixmap->fill();
 
-    draw_triangle(painter);
+    Add_triangle(painter);
 
     ui->label_draw_area->setPixmap(*pixmap);
 }
