@@ -5,7 +5,7 @@
 #include <QPixmap>
 #include <QPen>
 #include "figure.h"
-#include "mainwindow.cpp
+#include "mainwindow.cpp"
 circle::circle()
 {
   radio = rand() % 100 + 1;
