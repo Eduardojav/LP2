@@ -8,7 +8,10 @@
 #include <QPixmap>
 #include <QPen>
 #include <vector>
-std::vector <figure*>draws;
+#include "triangle.h"
+#include "circle.h"
+#include "square.h"
+#include <vector>
 namespace Ui {
 class MainWindow;
 }
@@ -21,23 +24,24 @@ public:
     explicit MainWindow(QWidget * parent = nullptr);
     ~MainWindow();
 
-private: slots
+private slots:
     void on_b_draw_clicked();
     void on_b_draw_circle_clicked();
     void on_b_draw_square_clicked();
     void on_b_draw_triangle_clicked();
 
 
-private:
-    void Add_circle(QPainter *painter);
-    void Add_square(QPainter *painter);
-    void Add_triangle(QPainter *painter);
+    void on_a_color_2_clicked();
 
-    Ui::MainWindow * ui;
+private:
+    Ui::MainWindow *ui;
+
+    protected:
     QPainter *painter;
     QPixmap *pixmap;
     QPen *pen;
+    QPixmap *as;
+    std::vector <figure*> draws;
 };
 
-#endif  MAINWINDOW_H
-
+#endif  //MAINWINDOW_H

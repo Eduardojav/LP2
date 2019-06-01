@@ -1,17 +1,20 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "figure.h"
-#include <vector>
+#include "triangle.h"
+#include "circle.h"
+#include "square.h"
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
-    pixmap = new QPixmap(600, 400);
+    pixmap = new QPixmap(600, 200);
     pixmap->fill();
 
-    pen = new QPen(QColor("black"));
+    pen = new QPen(QColor("red"));
+    pen->setWidth(5);
 
     ui->label_draw_area->setPixmap(*pixmap);
 
@@ -21,10 +24,18 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
-    delete ui;
+
+        delete ui;
+        delete pixmap;
+        delete pen;
+        delete painter;
+    for(unsigned long long i=0;i<draws.size();i++){
+           delete [] draws[i];
+       }
+
 }
 
-void MainWindow::Add_circle(QPainter * painter)
+void MainWindow::on_b_draw_circle_clicked()
 {
     int side=rand() % 100 + 1;
     int x=rand()%pixmap->width();
@@ -32,14 +43,14 @@ void MainWindow::Add_circle(QPainter * painter)
     draws.push_back(new circle(x,y,side));
 
 }
-void MainWindow::Add_square(QPainter * painter)
+void MainWindow::on_b_draw_square_clicked()
 {
     int side=rand() % 100 + 1;
     int x=rand()%pixmap->width();
     int y=rand()%pixmap->height();
     draws.push_back(new square(x, y,side));
 }
-void MainWindow::Add_triangle(QPainter *painter){
+void MainWindow::on_b_draw_triangle_clicked(){
 
 
     int x1=rand()%pixmap->width();int y1=rand()%pixmap->height();
@@ -49,35 +60,14 @@ void MainWindow::Add_triangle(QPainter *painter){
 
 };
 
-void MainWindow::on_b_draw_circle_clicked()
+
+void MainWindow::on_a_color_2_clicked()
 {
-    pixmap->fill();
 
-    Add_circle(painter);
+        pixmap->fill();
+            for(int i=0;i<draws.size();i++){
+                draws[i]->draw(painter);
+            }
+            ui->label_draw_area->setPixmap(*pixmap);
 
-    ui->label_draw_area->setPixmap(*pixmap);
-}
-void MainWindow::on_b_draw_square_clicked()
-{
-    pixmap->fill();
-
-    Add_square(painter);
-
-    ui->label_draw_area->setPixmap(*pixmap);
-}
-void MainWindow::on_b_draw_triangle_clicked()
-{
-    pixmap->fill();
-
-    Add_triangle(painter);
-
-    ui->label_draw_area->setPixmap(*pixmap);
-}
-void MainWindow::on_b_draw_clicked()
-{
-    pixmap->fill();
-    for(unsigned long long i=0; i<draws.size(); i++){
-        draws[i]->draw(painter);
-    }
-    ui->label_draw_area->setPixmap(*pixmap);
 }

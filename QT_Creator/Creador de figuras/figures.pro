@@ -24,12 +24,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
+        circle.cpp \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+        square.cpp \
+        triangle.cpp
 
 HEADERS += \
+        circle.h \
         figure.h \
-        mainwindow.h
+        mainwindow.h \
+        square.h \
+        triangle.h
 
 FORMS += \
         mainwindow.ui

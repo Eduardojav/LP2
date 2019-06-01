@@ -18,9 +18,9 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>0</y>
+      <y>-90</y>
       <width>601</width>
-      <height>361</height>
+      <height>461</height>
      </rect>
     </property>
     <property name="text">
@@ -31,7 +31,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>380</y>
+      <y>410</y>
       <width>161</width>
       <height>25</height>
      </rect>
@@ -44,7 +44,7 @@
     <property name="geometry">
      <rect>
       <x>200</x>
-      <y>380</y>
+      <y>410</y>
       <width>161</width>
       <height>25</height>
      </rect>
@@ -56,7 +56,7 @@
    <widget class="QPushButton" name="b_draw_triangle">
     <property name="geometry">
      <rect>
-      <x>380</x>
+      <x>250</x>
       <y>380</y>
       <width>161</width>
       <height>25</height>
@@ -66,23 +66,10 @@
      <string>Draw Triangle</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="a_color_1">
-    <property name="geometry">
-     <rect>
-      <x>100</x>
-      <y>410</y>
-      <width>161</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Background</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="a_color_2">
     <property name="geometry">
      <rect>
-      <x>300</x>
+      <x>410</x>
       <y>410</y>
       <width>161</width>
       <height>25</height>
