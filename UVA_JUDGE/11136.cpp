@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <set>
+#include <iostream>
 
 using namespace std;
 
@@ -11,7 +12,7 @@ int main()
     
     while ( scanf("%d",&n), n )
     {
-        long long ans = 0LL;
+        long long ans = 0;
         urn.clear();
         for (int i=0; i<n; i++)
         {
