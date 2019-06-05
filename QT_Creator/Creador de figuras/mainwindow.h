@@ -25,7 +25,6 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_b_draw_clicked();
     void on_b_draw_circle_clicked();
     void on_b_draw_square_clicked();
     void on_b_draw_triangle_clicked();
