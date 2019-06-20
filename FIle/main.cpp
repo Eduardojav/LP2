@@ -5,7 +5,8 @@
 using namespace std;
 struct A{
 int x;
-char str[100];
+int y;
+string str;
 friend ostream & operator <<(ostream& os , A&a){
 	os<<a.x<<" "<<a.str;
 	return os;
@@ -13,22 +14,33 @@ friend ostream & operator <<(ostream& os , A&a){
 friend istream & operator >>(istream & is, A& a){
 
 		is>>a.x>>a.str;
+		a.y=a.str.size();
 	return is;
 }
 };
+
 void save_array(vector<A> data){
 	ofstream fs ("out.txt",ios::app|ios::binary);
-	for(int i=0;i<data.size();i++)
-        	fs.write( (char *) &data[i], sizeof( A ) );
+	for(int i=0;i<data.size();i++){
+        	fs.write( (char *) &data[i].x, sizeof( int ));
+			fs.write( (char *) &data[i].y, sizeof( int ) );
+			fs.write(data[i].str.c_str(),data[i].y);
+	}
     fs.close();
 }
 void read(){
 	A b;
+	size_t y;
 	ifstream fs("out.txt",ios::binary);
-		while( fs.read( (char *) &b, sizeof( A ) ) ) {
+		while(fs.read( (char *) &b.x, sizeof( int ))) {
+			fs.read( (char *) & b.y, sizeof( int ));
+			char* f=new char[b.y+2];
+			fs.read( f, b.y );
+			f[b.y]=0;
+			b.str=f;
+			delete []f;
 		cout << b << endl;
-		}
-		fs.close();
+	}
 
 }
 int main(){
